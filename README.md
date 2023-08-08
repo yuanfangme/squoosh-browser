@@ -3,6 +3,12 @@
 谷歌squoosh的浏览器移植版本：
 https://github.com/GoogleChromeLabs/squoosh
 
+## demo
+
+1. 运行 build/squoosh/index.html
+
+2. 控制台执行 SquooshTest()
+
 ## build
 
 ```shell
@@ -18,11 +24,22 @@ npm run build-wp
 ```
 
 ```js
+
+// 获取图片宽高
+const img = new Image();
+img.src = URL.createObjectURL(image);
+img.onload = function(){
+  console.log(img.width); // 图片宽度
+  console.log(img.height); // 图片高度
+  URL.revokeObjectURL(img.src); // 释放URL对象引用
+  console.log('load img cost ',new Date().getTime()-st)
+}
+
 // image 输入的图片file对象
-const compress = new Compress(image, {
+const compress = new SquooshCompress(image, {
   encoderState: {
     type: "mozJPEG",
-    options: { ...encoderMap.mozJPEG.meta.defaultOptions, quality: 70 }
+    options: { ...SquooshEncoderMap.mozJPEG.meta.defaultOptions, quality: 70 }
   },
   processorState: { quantize: { enabled: false },
     resize: {
@@ -51,6 +68,8 @@ reader.readAsDataURL(compressFile)
 ```
 
 ## performance
+
+使用上述代码的配置进行测试而得
 
 | 图片类型| 原始分辨率 |原始大小 | 压缩大小 | 压缩耗时 | 压缩率 | 裁剪50%压缩大小 | 裁剪50%压缩耗时 |
 | --- | --- | --- |--- |--- |--- |--- |--- |

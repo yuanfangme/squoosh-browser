@@ -7,8 +7,8 @@ import {encoderMap} from "./client/lazy-app/feature-meta"
 
 // console.log(document)
 
-window.squooshCompress = Compress
-window.squooshEncoderMap = encoderMap
+window.SquooshCompress = Compress
+window.SquooshEncoderMap = encoderMap
 
 console.log('init squoosh')
 function initSquooshTest(){
