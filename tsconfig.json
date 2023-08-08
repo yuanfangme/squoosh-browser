@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    // "downlevelIteration": true,
+    "declaration": true,
+    "removeComments": true,
+    // "allowSyntheticDefaultImports": true,
+    // "sourceMap": false,
+    "outDir": "./dist",
+    // "incremental": true,
+    "target":"ESNext",
+    "module":"ESNext",
+    "moduleResolution": "node",
+  },
+}
